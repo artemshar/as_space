@@ -1,0 +1,138 @@
+@layer layout, components;
+
+@layer layout {
+  .tradeoffs-page {
+    display: grid;
+    place-items: center;
+    min-block-size: 100dvb;
+  }
+
+  .tradeoffs-shell {
+    inline-size: min(100% - 2rem, 44rem);
+    padding-block: clamp(1.5rem, 4dvh, 3.5rem);
+    gap: 1.25rem;
+  }
+
+  .tradeoffs-main {
+    justify-content: center;
+  }
+}
+
+@layer components {
+  .knobs-card {
+    background: color-mix(in oklab, var(--bg-elevated) 88%, var(--accent) 12%);
+    border: 1px solid var(--border);
+    border-radius: 1.1rem;
+    padding: clamp(1rem, 3.5dvw, 1.5rem);
+    box-shadow: 0 18px 50px color-mix(in oklab, var(--accent) 10%, transparent);
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 150px;
+  }
+
+  .knobs-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.3dvw + 0.9rem, 2.2rem);
+    letter-spacing: -0.02em;
+    text-align: center;
+  }
+
+  .knobs-subtitle {
+    text-align: center;
+    color: var(--fg-muted);
+    font-size: 0.95rem;
+  }
+
+  .knob-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .knob-item {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .knob-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .knob-label output {
+    min-inline-size: 2.2rem;
+    text-align: end;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .knob-slider {
+    appearance: none;
+    inline-size: 100%;
+    block-size: 2rem;
+    border-radius: 999px;
+    background:
+      linear-gradient(
+        90deg,
+        color-mix(in oklab, var(--accent) 60%, var(--bg-elevated)) 0%,
+        color-mix(in oklab, var(--accent) 25%, var(--bg-elevated)) var(--fill, 66%),
+        color-mix(in oklab, var(--fg) 10%, var(--bg)) var(--fill, 66%)
+      );
+    border: 1px solid color-mix(in oklab, var(--fg) 15%, transparent);
+    outline: none;
+    transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+  }
+
+  .knob-slider:hover {
+    border-color: color-mix(in oklab, var(--accent) 40%, var(--border));
+  }
+
+  .knob-slider:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 35%, transparent);
+  }
+
+  .knob-slider::-webkit-slider-thumb {
+    appearance: none;
+    inline-size: 1.55rem;
+    block-size: 1.55rem;
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+    background: var(--accent);
+    box-shadow: 0 4px 12px color-mix(in oklab, var(--accent) 45%, transparent);
+    cursor: pointer;
+  }
+
+  .knob-slider::-moz-range-thumb {
+    inline-size: 1.55rem;
+    block-size: 1.55rem;
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+    background: var(--accent);
+    box-shadow: 0 4px 12px color-mix(in oklab, var(--accent) 45%, transparent);
+    cursor: pointer;
+  }
+
+  .budget-row {
+    margin-block-start: 0.25rem;
+    padding: 0.8rem 0.95rem;
+    border-radius: 0.75rem;
+    border: 1px dashed color-mix(in oklab, var(--accent) 28%, var(--border));
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-size: 0.92rem;
+  }
+
+  .budget-row strong {
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+  }
+
+  .tradeoffs-footer {
+    border-block-start-style: dashed;
+  }
+}

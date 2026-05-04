@@ -8,7 +8,7 @@ const STORAGE_KEY = "artemshar.space-theme";
 function readStored() {
   const v = localStorage.getItem(STORAGE_KEY);
   if (v === "light" || v === "dark") return v;
-  return "light";
+  return "dark";
 }
 
 /** @param {"light" | "dark"} mode */

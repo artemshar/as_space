@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Interactive project trade-off knobs: quality, speed, and low cost."
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e0d0c" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/tradeoffs.css" />
+    <script>
+      try {
+        var t = localStorage.getItem("artemshar.space-theme");
+        if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+      } catch (_) {}
+    </script>
+    <title>Quality × Speed × Low Cost</title>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <div class="page tradeoffs-page">
+      <div class="shell tradeoffs-shell">
+        <main id="main" class="site-main tradeoffs-main">
+          <section class="knobs-card" aria-labelledby="knobs-heading">
+            <h1 id="knobs-heading" class="knobs-title">Project Trade-offs</h1>
+            <p class="knobs-subtitle">You have 200 total points to split between three knobs.</p>
+
+            <ul class="knob-list" aria-label="Trade-off knobs">
+              <li class="knob-item">
+                <label class="knob-label" for="knob-quality">
+                  <span>Quality</span>
+                  <output id="value-quality" for="knob-quality">66</output>
+                </label>
+                <input id="knob-quality" class="knob-slider" data-knob="quality" type="range" min="0" max="100" step="1" value="66" />
+              </li>
+              <li class="knob-item">
+                <label class="knob-label" for="knob-speed">
+                  <span>Speed</span>
+                  <output id="value-speed" for="knob-speed">67</output>
+                </label>
+                <input id="knob-speed" class="knob-slider" data-knob="speed" type="range" min="0" max="100" step="1" value="67" />
+              </li>
+              <li class="knob-item">
+                <label class="knob-label" for="knob-lowcost">
+                  <span>Low cost</span>
+                  <output id="value-lowcost" for="knob-lowcost">67</output>
+                </label>
+                <input id="knob-lowcost" class="knob-slider" data-knob="lowcost" type="range" min="0" max="100" step="1" value="67" />
+              </li>
+            </ul>
+
+            <div class="budget-row" aria-live="polite">
+              <span>Total used</span>
+              <strong><span data-total-used>200</span> / 200</strong>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer tradeoffs-footer">
+          <span>Try any combination.</span>
+          <div class="footer-end">
+            <span>Quality + Speed + Low cost share one budget.</span>
+            <button
+              type="button"
+              class="theme-toggle"
+              data-theme-toggle
+              aria-label="Theme: Light theme. Click to switch."
+              title="Light theme"
+            >
+              <svg data-icon="sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" hidden>
+                <use href="icons/sprite.svg#theme-sun"></use>
+              </svg>
+              <svg data-icon="moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" hidden>
+                <use href="icons/sprite.svg#theme-moon"></use>
+              </svg>
+            </button>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script src="js/theme.js" defer></script>
+    <script src="js/tradeoffs.js" defer></script>
+  </body>
+</html>
