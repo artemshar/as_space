@@ -457,6 +457,14 @@
     margin-block-end: var(--space-md);
   }
 
+  .section-subtitle {
+    margin: calc(var(--space-md) * -0.6) 0 var(--space-md);
+    font-size: var(--text-sm);
+    line-height: 1.45;
+    color: var(--fg-muted);
+    max-inline-size: 72ch;
+  }
+
   .contact-list {
     display: flex;
     flex-wrap: wrap;
