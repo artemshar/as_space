@@ -212,7 +212,7 @@
     inline-size: 100%;
     contain: layout style;
     font-family: var(--font-display);
-    font-size: clamp(1.05rem, calc(0.45rem + 4.6vw), 2.45rem);
+    font-size: clamp(1.05rem, calc(0.2rem + 4.6vw), 2.45rem);
     font-weight: 600;
     letter-spacing: -0.02em;
     text-decoration: none;
@@ -230,6 +230,12 @@
 
   .wordmark:hover .wordmark-dot {
     margin-inline: 1em;
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .wordmark .wordmark-dot {
+      margin-inline: 1em;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -253,6 +259,13 @@
   .wordmark:hover .wordmark-dot__ring {
     stroke: var(--fg);
     fill: none;
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .wordmark .wordmark-dot__ring {
+      stroke: var(--fg);
+      fill: none;
+    }
   }
 
   .theme-toggle {
@@ -463,6 +476,10 @@
     line-height: 1.45;
     color: var(--fg-muted);
     max-inline-size: 72ch;
+  }
+
+  summary {
+    cursor: pointer;
   }
 
   .contact-list {
