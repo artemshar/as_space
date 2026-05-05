@@ -377,13 +377,7 @@
   }
 
   .hero-tagline__break {
-    display: none;
-  }
-
-  @media (min-width: 48rem) {
-    .hero-tagline__break {
-      display: block;
-    }
+    display: block;
   }
 
   .hoverhlt {
