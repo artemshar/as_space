@@ -34,9 +34,15 @@
           <section class="hero" aria-labelledby="hero-heading">
             <div class="hero-intro">
               <h2 class="hero-tagline">
-                <span class="hero-tagline__strong">Software Engineer </span> with extensive experience in
+                <span>
+                  <span class="hero-tagline__text">Design & Engineering systems for the Internet</span>
+                  <svg class="hero-tagline__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M3 12h18M12 3a14 14 0 0 0 0 18M12 3a14 14 0 0 1 0 18M5.6 7.5h12.8M5.6 16.5h12.8"></path>
+                  </svg>
+                </span>
                 <br class="hero-tagline__break" />
-                <span class="hoverhlt">Full-Stack &amp; Front-End development</span>
+                <span class="hoverhlt">I build systems that work for people, not the other way around.</span>
               </h2>
             </div>
           </section>
@@ -87,8 +93,10 @@
             </ul>
           </section>
 
-          <section id="experience" aria-labelledby="experience-heading">
-            <h2 id="experience-heading" class="section-title">Experience</h2>
+          <details id="experience" aria-labelledby="experience-heading" open>
+            <summary>
+              <h2 id="experience-heading" class="section-title">Experience in hiring</h2>
+            </summary>
             <nav aria-label="Experience">
               <ul class="experience-list">
                 <li class="experience-item">
@@ -144,10 +152,12 @@
               </ul>
             </nav>
 
-          </section>
+          </details>
 
-          <section id="projects" aria-labelledby="projects-heading">
-            <h2 id="projects-heading" class="section-title">My zoo of projects and demos</h2>
+          <details id="projects" aria-labelledby="projects-heading" open>
+            <summary>
+              <h2 id="projects-heading" class="section-title">Projects and demos</h2>
+            </summary>
             <nav aria-label="Projects">
               <ul class="projects-grid">
                 <li>
@@ -209,10 +219,12 @@
                 </li>
               </ul>
             </nav>
-          </section>
+          </details>
 
-          <section id="stack" aria-labelledby="stack-heading">
-            <h2 id="stack-heading" class="section-title">Tech stack</h2>
+          <details id="stack" aria-labelledby="stack-heading" open>
+            <summary>
+              <h2 id="stack-heading" class="section-title">Tech stack</h2>
+            </summary>
             <nav aria-label="Tech stack">
               <ul class="stack-grid">
                 <li><a class="stack-chip" href="https://techicons.dev/icons/typescript" target="_blank" rel="noreferrer"><img src="https://icon.icepanel.io/Technology/svg/TypeScript.svg" alt="TypeScript icon" loading="lazy" width="28" height="28"><span>TypeScript</span></a></li>
@@ -237,7 +249,7 @@
                 <li><a class="stack-chip" href="https://techicons.dev/icons/gitlab" target="_blank" rel="noreferrer"><img src="https://icon.icepanel.io/Technology/svg/GitLab.svg" alt="GitLab icon" loading="lazy" width="28" height="28"><span>GitLab</span></a></li>
               </ul>
             </nav>
-          </section>
+          </details>
         </main>
 
         <footer class="site-footer">
