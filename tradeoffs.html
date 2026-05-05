@@ -26,6 +26,9 @@
 
     <div class="page tradeoffs-page">
       <div class="shell tradeoffs-shell">
+        <header class="site-header">
+          <a class="wordmark" href="/">Artem Shar<svg class="wordmark-dot" viewBox="0 0 24 24" aria-hidden="true"><circle class="wordmark-dot__ring" cx="12" cy="12" r="8" /><circle class="wordmark-dot__dot" cx="12" cy="12" r="1" /></svg> Space</a>
+        </header>
         <main id="main" class="site-main tradeoffs-main">
           <section class="knobs-card" aria-labelledby="knobs-heading">
             <h1 id="knobs-heading" class="knobs-title">Project Trade-offs</h1>
@@ -59,6 +62,52 @@
               <span>Total used</span>
               <strong><span data-total-used>200</span> / 200</strong>
             </div>
+            <button class="tradeoffs-contact-form__submit" type="button" data-preset-workstyle>
+              Set how I prefer to work
+            </button>
+
+            <form class="tradeoffs-contact-form" data-contact-form>
+              <h2 class="tradeoffs-contact-form__title">Contact me about this setup</h2>
+              <label class="tradeoffs-contact-form__field">
+                <span>Name</span>
+                <input type="text" name="name" autocomplete="name" required />
+              </label>
+              <label class="tradeoffs-contact-form__field">
+                <span>Contact</span>
+                <input type="text" name="contact" autocomplete="email" required />
+              </label>
+              <label class="tradeoffs-contact-form__field">
+                <span>Message</span>
+                <textarea
+                  name="info"
+                  rows="9"
+                  data-tradeoffs-message
+                  placeholder="Hi Artem, we need a senior engineer/product-minded developer for our project and your profile looks like a strong fit.
+
+We are looking for someone who can balance product speed, delivery quality, and budget constraints without losing focus on business outcomes.
+
+If you're open to it, I'd love to share context, goals, and timeline and explore whether this could be a good match.
+
+Would you be available for a short intro call this week?"
+                ></textarea>
+              </label>
+              <div class="tradeoffs-contact-form__tradeoffs" aria-label="Current trade-off values">
+                <label class="tradeoffs-contact-form__field">
+                  <span>Quality</span>
+                  <input type="number" name="quality" data-tradeoff-quality readonly />
+                </label>
+                <label class="tradeoffs-contact-form__field">
+                  <span>Speed</span>
+                  <input type="number" name="speed" data-tradeoff-speed readonly />
+                </label>
+                <label class="tradeoffs-contact-form__field">
+                  <span>Low cost</span>
+                  <input type="number" name="lowcost" data-tradeoff-lowcost readonly />
+                </label>
+              </div>
+              <button class="tradeoffs-contact-form__submit" type="submit">Send message</button>
+              <p class="tradeoffs-contact-form__status" data-contact-status aria-live="polite"></p>
+            </form>
           </section>
         </main>
 

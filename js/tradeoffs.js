@@ -12,6 +12,13 @@ function updateSliderFill(slider, value) {
 
 function initTradeoffs() {
   const sliders = Array.from(document.querySelectorAll(".knob-slider"));
+  const formEl = document.querySelector("[data-contact-form]");
+  const messageEl = document.querySelector("[data-tradeoffs-message]");
+  const statusEl = document.querySelector("[data-contact-status]");
+  const presetWorkstyleEl = document.querySelector("[data-preset-workstyle]");
+  const qualityField = document.querySelector("[data-tradeoff-quality]");
+  const speedField = document.querySelector("[data-tradeoff-speed]");
+  const lowcostField = document.querySelector("[data-tradeoff-lowcost]");
   const outputMap = {
     quality: document.getElementById("value-quality"),
     speed: document.getElementById("value-speed"),
@@ -23,6 +30,17 @@ function initTradeoffs() {
 
   let values = sliders.map((slider) => Number.parseInt(slider.value, 10));
   let lastChangedIndex = 0;
+
+  function buildTradeoffsBlock() {
+    const quality = values[0] ?? 0;
+    const speed = values[1] ?? 0;
+    const lowcost = values[2] ?? 0;
+    return [
+      `- quality: ${quality}`,
+      `- speed: ${speed}`,
+      `- low cost: ${lowcost}`,
+    ].join("\n");
+  }
 
   function syncUI() {
     let total = 0;
@@ -38,6 +56,9 @@ function initTradeoffs() {
       total += value;
     });
     totalUsedEl.textContent = String(total);
+    if (qualityField) qualityField.value = String(values[0] ?? 0);
+    if (speedField) speedField.value = String(values[1] ?? 0);
+    if (lowcostField) lowcostField.value = String(values[2] ?? 0);
   }
 
   function reduceFromOthers(activeIndex, overflow) {
@@ -83,6 +104,59 @@ function initTradeoffs() {
       syncUI();
     });
   });
+
+  if (presetWorkstyleEl) {
+    presetWorkstyleEl.addEventListener("click", () => {
+      values = [100, 50, 50];
+      lastChangedIndex = 0;
+      syncUI();
+    });
+  }
+
+  if (formEl) {
+    formEl.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const formData = new FormData(formEl);
+      const payload = {
+        name: String(formData.get("name") || "").trim(),
+        contact: String(formData.get("contact") || "").trim(),
+        info: String(formData.get("info") || "").trim(),
+      };
+      const tradeoffsBlock = buildTradeoffsBlock();
+      const composedInfo = payload.info
+        ? `${payload.info}\n\n${tradeoffsBlock}`
+        : tradeoffsBlock;
+
+      if (!payload.name || !payload.contact) {
+        if (statusEl) {
+          statusEl.textContent = "Please fill name and contact.";
+        }
+        return;
+      }
+
+      if (statusEl) {
+        statusEl.textContent = "Sending...";
+      }
+
+      try {
+        await fetch("https://api.artemshar.space/api/chat/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...payload,
+            info: composedInfo,
+          }),
+        });
+        if (statusEl) {
+          statusEl.textContent = "Message sent. Thank you!";
+        }
+      } catch (_) {
+        if (statusEl) {
+          statusEl.textContent = "Failed to send info. Please try again.";
+        }
+      }
+    });
+  }
 
   syncUI();
 }
