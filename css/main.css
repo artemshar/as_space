@@ -250,10 +250,6 @@
   }
 
 
-  .wordmark:hover {
-    /* color: var(--accent); */
-  }
-
   .wordmark:hover .wordmark-dot__ring {
     stroke: var(--fg);
     fill: none;
@@ -432,17 +428,22 @@
   }
 
   .section-title {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--fg-muted);
+    color: #7ab09c;
+    line-height: 1;
     margin-block-end: var(--space-md);
   }
 
   .contact-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: var(--space-sm);
     list-style: none;
     padding: 0;
@@ -473,6 +474,152 @@
   .contact-list svg {
     inline-size: 1.25rem;
     block-size: 1.25rem;
+  }
+
+  .experience-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0;
+    border-block: 1px solid var(--border);
+  }
+
+  .experience-item {
+    padding-block: 0.75rem;
+    border-block-end: 1px solid var(--border);
+  }
+
+  .experience-item:last-child {
+    border-block-end: 0;
+  }
+
+  .experience-item__title {
+    font-size: 0.98rem;
+    line-height: 1.35;
+    color: var(--fg);
+  }
+
+  .experience-item__period {
+    margin-block-start: 0.1rem;
+    font-size: var(--text-sm);
+    letter-spacing: 0.02em;
+    color: var(--fg-muted);
+  }
+
+  .experience-item__description {
+    margin-block-start: 0.3rem;
+    max-inline-size: 70ch;
+    font-size: var(--text-sm);
+    line-height: 1.45;
+    color: var(--fg-muted);
+  }
+
+  .projects-grid {
+    display: grid;
+    gap: var(--space-sm);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .projects-grid > li .project-card {
+    text-align: center;
+    align-items: center;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    min-block-size: 7.5rem;
+    padding: var(--space-md);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    color: inherit;
+    text-decoration: none;
+    transition:
+      border-color var(--duration) var(--ease-out),
+      background var(--duration) var(--ease-out),
+      transform var(--duration) var(--ease-out);
+  }
+
+  .project-card__icon {
+    inline-size: 2.25rem;
+    block-size: 2.25rem;
+    color: var(--fg);
+    flex-shrink: 0;
+    margin-block-end: 0.2rem;
+  }
+
+  .project-card:hover {
+    border-color: color-mix(in oklab, var(--accent) 45%, var(--border));
+    transform: translateY(-2px);
+  }
+
+  .project-card__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--fg);
+    text-transform: uppercase;
+  }
+
+  .project-card__description {
+    font-size: var(--text-sm);
+    line-height: 1.45;
+    color: var(--fg-muted);
+    max-inline-size: 58ch;
+  }
+
+  .stack-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  @media (min-width: 38rem) {
+    .stack-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 56rem) {
+    .stack-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .stack-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-block-size: 2.75rem;
+    padding: 0.5rem 0.65rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-elevated);
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.88rem;
+    line-height: 1.2;
+    transition:
+      border-color var(--duration) var(--ease-out),
+      transform var(--duration) var(--ease-out);
+  }
+
+  .stack-chip:hover {
+    border-color: color-mix(in oklab, var(--accent) 45%, var(--border));
+    transform: translateY(-1px);
+  }
+
+  .stack-chip img {
+    inline-size: 1.4rem;
+    block-size: 1.4rem;
+    flex-shrink: 0;
   }
 
   .visually-hidden {
