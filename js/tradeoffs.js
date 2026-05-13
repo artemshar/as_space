@@ -107,7 +107,7 @@ function initTradeoffs() {
 
   if (presetWorkstyleEl) {
     presetWorkstyleEl.addEventListener("click", () => {
-      values = [100, 75, 25];
+      values = [90, 60, 50];
       lastChangedIndex = 0;
       syncUI();
     });
