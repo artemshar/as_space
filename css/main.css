@@ -721,10 +721,10 @@
 
   .ticker-track {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     align-items: center;
     flex-shrink: 0;
-    animation: scroll 30s linear infinite;
+    animation: scroll 45s linear infinite;
     will-change: transform;
   }
 
@@ -737,34 +737,60 @@
       transform: translateX(0);
     }
     100% {
-      transform: translateX(calc(-100% - 2rem));
+      transform: translateX(calc(-100% - 2.5rem));
     }
   }
 
-  .ticker-track img {
-    inline-size: 3rem;
-    block-size: 3rem;
+  .ticker-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
     flex-shrink: 0;
-    opacity: 0.85;
-    transition: opacity var(--duration) var(--ease-out), filter var(--duration) var(--ease-out);
-    filter: grayscale(0.3);
   }
 
-  .ticker-track img:hover {
+  .ticker-item img {
+    inline-size: 2rem;
+    block-size: 2rem;
+    flex-shrink: 0;
+    opacity: 0.8;
+    transition: opacity var(--duration) var(--ease-out), filter var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
+    filter: grayscale(0.2);
+  }
+
+  .ticker-item:hover img {
     opacity: 1;
     filter: grayscale(0);
+    transform: scale(1.1);
+  }
+
+  .ticker-item span {
+    font-size: 0.75rem;
+    color: var(--fg-muted);
+    white-space: nowrap;
+    transition: color var(--duration) var(--ease-out);
+  }
+
+  .ticker-item:hover span {
+    color: var(--fg);
   }
 
   @media (prefers-reduced-motion: reduce) {
     .ticker-track {
       animation: none;
     }
+    .ticker-item:hover img {
+      transform: none;
+    }
   }
 
   @media (min-width: 48rem) {
-    .ticker-track img {
-      inline-size: 3.5rem;
-      block-size: 3.5rem;
+    .ticker-item img {
+      inline-size: 2.25rem;
+      block-size: 2.25rem;
+    }
+    .ticker-item span {
+      font-size: 0.8rem;
     }
   }
 }
