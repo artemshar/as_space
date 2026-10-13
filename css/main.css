@@ -714,17 +714,22 @@
 
   .ticker {
     display: flex;
-    gap: 0;
+    gap: 2rem;
     user-select: none;
+    width: max-content;
   }
 
   .ticker-track {
     display: flex;
     gap: 2rem;
     align-items: center;
-    padding-inline: 1rem;
-    animation: scroll 40s linear infinite;
+    flex-shrink: 0;
+    animation: scroll 30s linear infinite;
     will-change: transform;
+  }
+
+  .ticker-wrapper:hover .ticker-track {
+    animation-play-state: paused;
   }
 
   @keyframes scroll {
@@ -732,7 +737,7 @@
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(calc(-100% - 2rem));
     }
   }
 
@@ -741,7 +746,7 @@
     block-size: 3rem;
     flex-shrink: 0;
     opacity: 0.85;
-    transition: opacity var(--duration) var(--ease-out);
+    transition: opacity var(--duration) var(--ease-out), filter var(--duration) var(--ease-out);
     filter: grayscale(0.3);
   }
 
