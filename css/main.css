@@ -714,9 +714,7 @@
 
   .ticker {
     display: flex;
-    gap: 2rem;
     user-select: none;
-    width: max-content;
   }
 
   .ticker-track {
@@ -724,20 +722,35 @@
     gap: 2rem;
     align-items: center;
     flex-shrink: 0;
-    animation: scroll 45s linear infinite;
-    will-change: transform;
+    padding-inline-end: 2rem;
+    animation: scroll 50s linear infinite;
+    -webkit-animation: scroll 50s linear infinite;
   }
 
   .ticker-wrapper:hover .ticker-track {
     animation-play-state: paused;
+    -webkit-animation-play-state: paused;
   }
 
   @keyframes scroll {
-    0% {
+    from {
+      transform: translateX(0);
+      -webkit-transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+      -webkit-transform: translateX(-100%);
+    }
+  }
+
+  @-webkit-keyframes scroll {
+    from {
+      -webkit-transform: translateX(0);
       transform: translateX(0);
     }
-    100% {
-      transform: translateX(calc(-100% - 2rem));
+    to {
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-100%);
     }
   }
 
@@ -780,6 +793,7 @@
   @media (prefers-reduced-motion: reduce) {
     .ticker-track {
       animation: none;
+      -webkit-animation: none;
     }
     .ticker-item:hover img {
       transform: none;
