@@ -685,7 +685,6 @@
   }
 
   .ticker-wrapper {
-    overflow: hidden;
     margin-block-start: var(--space-lg);
     margin-inline: calc(var(--space-lg) * -2);
     padding-block: var(--space-lg);
@@ -697,7 +696,7 @@
     content: '';
     position: absolute;
     inset-block: 0;
-    inline-size: 6rem;
+    inline-size: 4.5rem;
     z-index: 1;
     pointer-events: none;
   }
@@ -714,7 +713,34 @@
 
   .ticker {
     display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    cursor: grab;
     user-select: none;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-inline: var(--space-lg);
+  }
+
+  .ticker.is-animating {
+    scroll-snap-type: none;
+  }
+
+  .ticker::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ticker:active {
+    cursor: grabbing;
+  }
+
+  .ticker:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
   }
 
   .ticker-track {
@@ -722,36 +748,8 @@
     gap: 2rem;
     align-items: center;
     flex-shrink: 0;
+    min-inline-size: max-content;
     padding-inline-end: 2rem;
-    animation: scroll 50s linear infinite;
-    -webkit-animation: scroll 50s linear infinite;
-  }
-
-  .ticker-wrapper:hover .ticker-track {
-    animation-play-state: paused;
-    -webkit-animation-play-state: paused;
-  }
-
-  @keyframes scroll {
-    from {
-      transform: translateX(0);
-      -webkit-transform: translateX(0);
-    }
-    to {
-      transform: translateX(-100%);
-      -webkit-transform: translateX(-100%);
-    }
-  }
-
-  @-webkit-keyframes scroll {
-    from {
-      -webkit-transform: translateX(0);
-      transform: translateX(0);
-    }
-    to {
-      -webkit-transform: translateX(-100%);
-      transform: translateX(-100%);
-    }
   }
 
   .ticker-item {
@@ -762,6 +760,8 @@
     gap: 0.4rem;
     flex-shrink: 0;
     text-align: center;
+    scroll-snap-align: start;
+    min-inline-size: 4.25rem;
   }
 
   .ticker-item img {
@@ -771,6 +771,7 @@
     opacity: 0.8;
     transition: opacity var(--duration) var(--ease-out), filter var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
     filter: grayscale(0.2);
+    pointer-events: none;
   }
 
   .ticker-item:hover img {
@@ -791,16 +792,15 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ticker-track {
-      animation: none;
-      -webkit-animation: none;
-    }
     .ticker-item:hover img {
       transform: none;
     }
   }
 
   @media (min-width: 48rem) {
+    .ticker-item {
+      min-inline-size: 4.75rem;
+    }
     .ticker-item img {
       inline-size: 1.75rem;
       block-size: 1.75rem;
